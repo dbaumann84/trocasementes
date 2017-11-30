@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPedidodesementeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPedidodesementeLabel_idPedidoDeSemente}"/>
+                    <h:outputText value="#{pedidodesementeController.selected.idPedidoDeSemente}" title="#{bundle.ViewPedidodesementeTitle_idPedidoDeSemente}"/>
+                    <h:outputText value="#{bundle.ViewPedidodesementeLabel_quantidade}"/>
+                    <h:outputText value="#{pedidodesementeController.selected.quantidade}" title="#{bundle.ViewPedidodesementeTitle_quantidade}"/>
+                    <h:outputText value="#{bundle.ViewPedidodesementeLabel_status}"/>
+                    <h:outputText value="#{pedidodesementeController.selected.status}" title="#{bundle.ViewPedidodesementeTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewPedidodesementeLabel_data}"/>
+                    <h:outputText value="#{pedidodesementeController.selected.data}" title="#{bundle.ViewPedidodesementeTitle_data}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPedidodesementeLabel_sementeDoUsuarioidsementeDoUsuario}"/>
+                    <h:outputText value="#{pedidodesementeController.selected.sementeDoUsuarioidsementeDoUsuario}" title="#{bundle.ViewPedidodesementeTitle_sementeDoUsuarioidsementeDoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewPedidodesementeLabel_usuarioIdusuario}"/>
+                    <h:outputText value="#{pedidodesementeController.selected.usuarioIdusuario}" title="#{bundle.ViewPedidodesementeTitle_usuarioIdusuario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pedidodesementeController.destroyAndView}" value="#{bundle.ViewPedidodesementeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPedidodesementeEditLink}"/>
+                <br />
+                <h:commandLink action="#{pedidodesementeController.prepareCreate}" value="#{bundle.ViewPedidodesementeCreateLink}" />
+                <br />
+                <h:commandLink action="#{pedidodesementeController.prepareList}" value="#{bundle.ViewPedidodesementeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPedidodesementeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

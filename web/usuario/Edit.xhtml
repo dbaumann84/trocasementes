@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_idusuario}" for="idusuario" />
+                    <h:inputText id="idusuario" value="#{usuarioController.selected.idusuario}" title="#{bundle.EditUsuarioTitle_idusuario}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_idusuario}"/>
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{usuarioController.selected.nome}" title="#{bundle.EditUsuarioTitle_nome}" />
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_sobrenome}" for="sobrenome" />
+                    <h:inputText id="sobrenome" value="#{usuarioController.selected.sobrenome}" title="#{bundle.EditUsuarioTitle_sobrenome}" />
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{usuarioController.selected.email}" title="#{bundle.EditUsuarioTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_senha}" for="senha" />
+                    <h:inputText id="senha" value="#{usuarioController.selected.senha}" title="#{bundle.EditUsuarioTitle_senha}" />
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_rua}" for="rua" />
+                    <h:inputText id="rua" value="#{usuarioController.selected.rua}" title="#{bundle.EditUsuarioTitle_rua}" />
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_numero}" for="numero" />
+                    <h:inputText id="numero" value="#{usuarioController.selected.numero}" title="#{bundle.EditUsuarioTitle_numero}" />
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_complemento}" for="complemento" />
+                    <h:inputText id="complemento" value="#{usuarioController.selected.complemento}" title="#{bundle.EditUsuarioTitle_complemento}" />
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_bairro}" for="bairro" />
+                    <h:inputText id="bairro" value="#{usuarioController.selected.bairro}" title="#{bundle.EditUsuarioTitle_bairro}" />
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_cep}" for="cep" />
+                    <h:inputText id="cep" value="#{usuarioController.selected.cep}" title="#{bundle.EditUsuarioTitle_cep}" />
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_cidade}" for="cidade" />
+                    <h:inputText id="cidade" value="#{usuarioController.selected.cidade}" title="#{bundle.EditUsuarioTitle_cidade}" />
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{usuarioController.selected.estado}" title="#{bundle.EditUsuarioTitle_estado}" />
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_reputacao}" for="reputacao" />
+                    <h:inputText id="reputacao" value="#{usuarioController.selected.reputacao}" title="#{bundle.EditUsuarioTitle_reputacao}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_reputacao}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{usuarioController.update}" value="#{bundle.EditUsuarioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditUsuarioViewLink}"/>
+                <br />
+                <h:commandLink action="#{usuarioController.prepareList}" value="#{bundle.EditUsuarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditUsuarioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
