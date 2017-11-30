@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditVariedadeplantaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditVariedadeplantaLabel_idvariedadePlanta}" for="idvariedadePlanta" />
+                    <h:inputText id="idvariedadePlanta" value="#{variedadeplantaController.selected.idvariedadePlanta}" title="#{bundle.EditVariedadeplantaTitle_idvariedadePlanta}" required="true" requiredMessage="#{bundle.EditVariedadeplantaRequiredMessage_idvariedadePlanta}"/>
+                    <h:outputLabel value="#{bundle.EditVariedadeplantaLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{variedadeplantaController.selected.nome}" title="#{bundle.EditVariedadeplantaTitle_nome}" required="true" requiredMessage="#{bundle.EditVariedadeplantaRequiredMessage_nome}"/>
+                    <h:outputLabel value="#{bundle.EditVariedadeplantaLabel_especieDePlantaidespecieDePlanta}" for="especieDePlantaidespecieDePlanta" />
+                    <h:selectOneMenu id="especieDePlantaidespecieDePlanta" value="#{variedadeplantaController.selected.especieDePlantaidespecieDePlanta}" title="#{bundle.EditVariedadeplantaTitle_especieDePlantaidespecieDePlanta}" required="true" requiredMessage="#{bundle.EditVariedadeplantaRequiredMessage_especieDePlantaidespecieDePlanta}">
+                        <f:selectItems value="#{especiedeplantaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{variedadeplantaController.update}" value="#{bundle.EditVariedadeplantaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditVariedadeplantaViewLink}"/>
+                <br />
+                <h:commandLink action="#{variedadeplantaController.prepareList}" value="#{bundle.EditVariedadeplantaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditVariedadeplantaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

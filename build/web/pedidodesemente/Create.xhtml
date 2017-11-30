@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePedidodesementeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePedidodesementeLabel_idPedidoDeSemente}" for="idPedidoDeSemente" />
+                    <h:inputText id="idPedidoDeSemente" value="#{pedidodesementeController.selected.idPedidoDeSemente}" title="#{bundle.CreatePedidodesementeTitle_idPedidoDeSemente}" required="true" requiredMessage="#{bundle.CreatePedidodesementeRequiredMessage_idPedidoDeSemente}"/>
+                    <h:outputLabel value="#{bundle.CreatePedidodesementeLabel_quantidade}" for="quantidade" />
+                    <h:inputText id="quantidade" value="#{pedidodesementeController.selected.quantidade}" title="#{bundle.CreatePedidodesementeTitle_quantidade}" required="true" requiredMessage="#{bundle.CreatePedidodesementeRequiredMessage_quantidade}"/>
+                    <h:outputLabel value="#{bundle.CreatePedidodesementeLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{pedidodesementeController.selected.status}" title="#{bundle.CreatePedidodesementeTitle_status}" required="true" requiredMessage="#{bundle.CreatePedidodesementeRequiredMessage_status}"/>
+                    <h:outputLabel value="#{bundle.CreatePedidodesementeLabel_data}" for="data" />
+                    <h:inputText id="data" value="#{pedidodesementeController.selected.data}" title="#{bundle.CreatePedidodesementeTitle_data}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePedidodesementeLabel_sementeDoUsuarioidsementeDoUsuario}" for="sementeDoUsuarioidsementeDoUsuario" />
+                    <h:selectOneMenu id="sementeDoUsuarioidsementeDoUsuario" value="#{pedidodesementeController.selected.sementeDoUsuarioidsementeDoUsuario}" title="#{bundle.CreatePedidodesementeTitle_sementeDoUsuarioidsementeDoUsuario}" required="true" requiredMessage="#{bundle.CreatePedidodesementeRequiredMessage_sementeDoUsuarioidsementeDoUsuario}">
+                        <f:selectItems value="#{sementedousuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePedidodesementeLabel_usuarioIdusuario}" for="usuarioIdusuario" />
+                    <h:selectOneMenu id="usuarioIdusuario" value="#{pedidodesementeController.selected.usuarioIdusuario}" title="#{bundle.CreatePedidodesementeTitle_usuarioIdusuario}" required="true" requiredMessage="#{bundle.CreatePedidodesementeRequiredMessage_usuarioIdusuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pedidodesementeController.create}" value="#{bundle.CreatePedidodesementeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pedidodesementeController.prepareList}" value="#{bundle.CreatePedidodesementeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePedidodesementeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

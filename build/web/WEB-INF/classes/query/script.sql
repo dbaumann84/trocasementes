@@ -1,0 +1,13 @@
+CREATE TABLE especiedeplanta (idespecieDePlanta INTEGER AUTO_INCREMENT NOT NULL, nome VARCHAR(255), PRIMARY KEY (idespecieDePlanta))
+CREATE TABLE usuario (idusuario INTEGER AUTO_INCREMENT NOT NULL, bairro VARCHAR(255), cep VARCHAR(255), cidade VARCHAR(255), complemento VARCHAR(255), email VARCHAR(255), estado VARCHAR(255), nome VARCHAR(255), numero VARCHAR(255), reputacao INTEGER, rua VARCHAR(255), senha VARCHAR(255), sobrenome VARCHAR(255), PRIMARY KEY (idusuario))
+CREATE TABLE pedidodesemente (idPedidoDeSemente INTEGER NOT NULL, data DATETIME, quantidade INTEGER, status VARCHAR(255), sementeDoUsuario_idsementeDoUsuario INTEGER, usuario_idusuario INTEGER, PRIMARY KEY (idPedidoDeSemente))
+CREATE TABLE variedadeplanta (idvariedadePlanta INTEGER AUTO_INCREMENT NOT NULL, nome VARCHAR(255), especieDePlanta_idespecieDePlanta INTEGER, PRIMARY KEY (idvariedadePlanta))
+CREATE TABLE administrador (idadministrador INTEGER AUTO_INCREMENT NOT NULL, usuario_idusuario INTEGER, PRIMARY KEY (idadministrador))
+CREATE TABLE sementedousuario (idsementeDoUsuario INTEGER AUTO_INCREMENT NOT NULL, data DATETIME, Observacoes VARCHAR(255), quantidadeEmEstoque INTEGER, usuario_idusuario INTEGER, variedadePlanta_idvariedadePlanta INTEGER, PRIMARY KEY (idsementeDoUsuario))
+ALTER TABLE pedidodesemente ADD CONSTRAINT pedidodesementesementeDoUsuario_idsementeDoUsuario FOREIGN KEY (sementeDoUsuario_idsementeDoUsuario) REFERENCES sementedousuario (idsementeDoUsuario)
+ALTER TABLE pedidodesemente ADD CONSTRAINT FK_pedidodesemente_usuario_idusuario FOREIGN KEY (usuario_idusuario) REFERENCES usuario (idusuario)
+ALTER TABLE variedadeplanta ADD CONSTRAINT variedadeplanta_especieDePlanta_idespecieDePlanta FOREIGN KEY (especieDePlanta_idespecieDePlanta) REFERENCES especiedeplanta (idespecieDePlanta)
+ALTER TABLE administrador ADD CONSTRAINT FK_administrador_usuario_idusuario FOREIGN KEY (usuario_idusuario) REFERENCES usuario (idusuario)
+ALTER TABLE sementedousuario ADD CONSTRAINT sementedousuario_variedadePlanta_idvariedadePlanta FOREIGN KEY (variedadePlanta_idvariedadePlanta) REFERENCES variedadeplanta (idvariedadePlanta)
+ALTER TABLE sementedousuario ADD CONSTRAINT FK_sementedousuario_usuario_idusuario FOREIGN KEY (usuario_idusuario) REFERENCES usuario (idusuario)
+SELECT especiedeplanta.nome,variedadeplanta.nome from variedadeplanta inner join especiedeplanta on especiedeplanta.`idespecieDePlanta`=variedadeplanta.`especieDePlanta_idespecieDePlanta`

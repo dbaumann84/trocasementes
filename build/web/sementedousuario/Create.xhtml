@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSementedousuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSementedousuarioLabel_idsementeDoUsuario}" for="idsementeDoUsuario" />
+                    <h:inputText id="idsementeDoUsuario" value="#{sementedousuarioController.selected.idsementeDoUsuario}" title="#{bundle.CreateSementedousuarioTitle_idsementeDoUsuario}" required="true" requiredMessage="#{bundle.CreateSementedousuarioRequiredMessage_idsementeDoUsuario}"/>
+                    <h:outputLabel value="#{bundle.CreateSementedousuarioLabel_quantidadeEmEstoque}" for="quantidadeEmEstoque" />
+                    <h:inputText id="quantidadeEmEstoque" value="#{sementedousuarioController.selected.quantidadeEmEstoque}" title="#{bundle.CreateSementedousuarioTitle_quantidadeEmEstoque}" required="true" requiredMessage="#{bundle.CreateSementedousuarioRequiredMessage_quantidadeEmEstoque}"/>
+                    <h:outputLabel value="#{bundle.CreateSementedousuarioLabel_observacoes}" for="observacoes" />
+                    <h:inputText id="observacoes" value="#{sementedousuarioController.selected.observacoes}" title="#{bundle.CreateSementedousuarioTitle_observacoes}" />
+                    <h:outputLabel value="#{bundle.CreateSementedousuarioLabel_data}" for="data" />
+                    <h:inputText id="data" value="#{sementedousuarioController.selected.data}" title="#{bundle.CreateSementedousuarioTitle_data}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateSementedousuarioLabel_usuarioIdusuario}" for="usuarioIdusuario" />
+                    <h:selectOneMenu id="usuarioIdusuario" value="#{sementedousuarioController.selected.usuarioIdusuario}" title="#{bundle.CreateSementedousuarioTitle_usuarioIdusuario}" required="true" requiredMessage="#{bundle.CreateSementedousuarioRequiredMessage_usuarioIdusuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSementedousuarioLabel_variedadePlantaidvariedadePlanta}" for="variedadePlantaidvariedadePlanta" />
+                    <h:selectOneMenu id="variedadePlantaidvariedadePlanta" value="#{sementedousuarioController.selected.variedadePlantaidvariedadePlanta}" title="#{bundle.CreateSementedousuarioTitle_variedadePlantaidvariedadePlanta}" required="true" requiredMessage="#{bundle.CreateSementedousuarioRequiredMessage_variedadePlantaidvariedadePlanta}">
+                        <f:selectItems value="#{variedadeplantaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sementedousuarioController.create}" value="#{bundle.CreateSementedousuarioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sementedousuarioController.prepareList}" value="#{bundle.CreateSementedousuarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSementedousuarioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

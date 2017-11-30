@@ -125,7 +125,7 @@ public class Variedadeplanta implements Serializable {
 
     @Override
     public String toString() {
-        return "entidade.Variedadeplanta[ idvariedadePlanta=" + idvariedadePlanta + " ]";
+        return nome;
     }
     
 }
